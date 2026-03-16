@@ -30,10 +30,10 @@ func maintain(path string) error {
 		return err
 	}
 	defer db.Close()
-	fmt.Fprintf(os.Stdout, "running VACUUM/ANALYZE maintenance on %s\n", path)
+	fmt.Fprintf(os.Stdout, "running maintenance on %s\n", path)
 
 
-	_, err = db.Exec("VACUUM; ANALYZE;")
+	_, err = db.Exec("VACUUM; PRAGMA optimize;")
 	fmt.Fprintf(os.Stdout, "completed maintenance on %s\n", path)
 	return err
 }
