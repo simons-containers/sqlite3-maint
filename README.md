@@ -9,9 +9,9 @@ Vacuum and analyze will be run on Sqlite3 files added with `--db` and found in d
 Example:
 
 ```bash
-docker run -it --rm -v data:/data \
+docker run -it --rm -v /path/to/sqlite/dbs:/data \
   ghcr.io/simons-containers/sqlite3-maint \
-  --dbdir /var/lib/emby/data
+  --dbdir /data
 ```
 
 ## Building
@@ -20,12 +20,12 @@ docker run -it --rm -v data:/data \
 |---|---|
 | `VERSION` | Current version tag
 
-Build container:
+Build container using build-args from versions.yaml:
 
 ```bash
-docker build \
-  -t sqlite3-maint:${VERSION} \
-  --build-arg VERSION=${VERSION} \
+docker build -t \
+  distroless-traefik:$(yq -r .traefik versions.yaml) \
+  $(yq -r 'to_entries[] | "--build-arg " + (.key | upcase) + "_VERSION=" + .value' versions.yaml) \
   -f Containerfile .
 ```
 
