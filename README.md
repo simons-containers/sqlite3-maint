@@ -1,3 +1,7 @@
+![Latest](https://ghcr-badge.egpl.dev/simons-containers/sqlite3-maint/latest_tag?ignore=latest,sha256*&label=latest)  
+![Size](https://ghcr-badge.egpl.dev/simons-containers/sqlite3-maint/size?tag=latest)  
+![Tags](https://ghcr-badge.egpl.dev/simons-containers/sqlite3-maint/tags?ignore=latest,sha256*)  
+
 # Sidecar sqlite3 maintenance container
 
 Sidecar container for running maintenance on sqlite3 databases as an initContainer.
